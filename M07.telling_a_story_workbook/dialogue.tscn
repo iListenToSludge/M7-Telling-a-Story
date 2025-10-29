@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8o5qo3on08yk"]
+[gd_scene load_steps=7 format=3 uid="uid://b8o5qo3on08yk"]
 
 [ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="1_758ep"]
+[ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_q2h7b"]
 [ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="2_hoxo3"]
 [ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="3_q2h7b"]
 [ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="4_hoxo3"]
@@ -20,6 +21,7 @@ anchor_bottom = 1.0
 offset_left = -960.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_q2h7b")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_iq77p")
@@ -63,13 +65,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 959.0
-offset_top = 626.0
-offset_right = -259.0
-offset_bottom = -379.0
+offset_left = 856.0
+offset_top = 559.0
+offset_right = -362.0
+offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "3 hawaiian drive-in burgers and 1 burger special and 1 riceplate with short ribs"
+fit_content = true
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 1
