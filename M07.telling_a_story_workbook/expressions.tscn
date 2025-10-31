@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://buuvmd4loey7c"]
+
+[ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_2ose3"]
+[ext_resource type="Script" uid="uid://cvyjtb2pbe8s4" path="res://dialogue.gd" id="2_yxgko"]
+[ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="3_3lcr7"]
+[ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="4_ofruo"]
+[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="5_mgwxf"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="6_d0dyi"]
+[ext_resource type="AudioStream" uid="uid://bafjgt7eu3x5a" path="res://assets/talking_synth.ogg" id="7_efu3l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iq77p"]
+shader = ExtResource("3_3lcr7")
+shader_parameter/pattern_sampler = ExtResource("4_ofruo")
+shader_parameter/bg_color = Color(0.6363903, 0.9494639, 0.88644814, 1)
+shader_parameter/pattern_color = Color(0.5137255, 0.42352942, 0.2627451, 1)
+shader_parameter/pattern_size = 256.0
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2ose3")
+script = ExtResource("2_yxgko")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_iq77p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.001
+offset_left = 106.0
+offset_top = 319.0
+offset_right = -59.0
+offset_bottom = -0.080078125
+texture = ExtResource("5_mgwxf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = 61.0
+offset_right = -56.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_d0dyi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 860.0
+offset_top = 514.0
+offset_right = -301.0
+offset_bottom = 779.0
+grow_horizontal = 2
+text = "3 hawaiian drive-in burgers and 1 burger special and 1 riceplate with short ribs"
+fit_content = true
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -53.0
+offset_right = -33.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "next"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_efu3l")
