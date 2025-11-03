@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://buuvmd4loey7c"]
+[gd_scene load_steps=8 format=3 uid="uid://buuvmd4loey7c"]
 
 [ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_2ose3"]
+[ext_resource type="Script" uid="uid://m8w7avcmx5fa" path="res://expressions.gd" id="2_0360b"]
 [ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="3_3lcr7"]
 [ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="4_ofruo"]
 [ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="5_mgwxf"]
@@ -21,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2ose3")
+script = ExtResource("2_0360b")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_iq77p")
@@ -32,6 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Body" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +45,8 @@ texture = ExtResource("5_mgwxf")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="Body"]
+[node name="Expression" type="TextureRect" parent="Body"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,10 +73,12 @@ metadata/_edit_group_ = true
 layout_mode = 2
 
 [node name="ButtonSophia" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Sophia"
 
 [node name="ButtonPink" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Pink"
 
@@ -80,13 +86,16 @@ text = "Pink"
 layout_mode = 2
 
 [node name="ButtonRegular" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Regular"
 
 [node name="ButtonSad" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Sad"
 
 [node name="ButtonHappy" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Happy"
