@@ -14,32 +14,28 @@ var expressions := {
 
 @onready var body: TextureRect = %Body
 @onready var expression: TextureRect = %Expression
-@onready var button_sophia: Button = %ButtonSophia
-@onready var button_pink: Button = %ButtonPink
-@onready var button_regular: Button = %ButtonRegular
-@onready var button_sad: Button = %ButtonSad
-@onready var button_happy: Button = %ButtonHappy
+@onready var row_bodies: HBoxContainer = $VBoxContainer/RowBodies
+@onready var row_expressions: HBoxContainer = $VBoxContainer/RowExpressions
+
+
+func create_button_pink() -> void:
+	var button := Button.new()
+	row_bodies.add_child(button)
+	var key := "pink"
+	button.text = key.capitalize()
+	button.pressed.connect(func() -> void:
+		body.texture = bodies[key]
+)
 
 func _ready() -> void:
-	body.texture= bodies["pink"]
-	expression.texture = expressions["happy"]
-	
-	button_sophia.pressed.connect(func()-> void:
-		body.texture = bodies["sophia"]
-	)
+	create_button_pink()
 
-	button_pink.pressed.connect(func()-> void:
-		body.texture = bodies["pink"]
-	)
 
-	button_happy.pressed.connect(func()-> void:	
-		expression.texture = expressions["happy"]
-	)
-
-	button_regular.pressed.connect(func()-> void:
-		expression.texture = expressions["regular"]
-	)
-
-	button_sad.pressed.connect(func()-> void:
-		expression.texture = expressions["sad"]
-	)
+func create_buttons() -> void:
+	for current_expression: String in expressions:
+		var button := Button.new()
+		row_expressions.add_child(button)
+		button.text = current_expression.capitalize()
+		button.pressed.connect(func() -> void:
+			expression.texture = expressions[current_expression]
+)
