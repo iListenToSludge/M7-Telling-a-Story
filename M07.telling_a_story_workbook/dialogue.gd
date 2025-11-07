@@ -3,18 +3,38 @@ extends Control
 @onready var rich_text_label: RichTextLabel = %RichTextLabel
 @onready var next_button: Button = $NextButton
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var body: TextureRect = %Body
+@onready var expression: TextureRect = %Expression
 
-var dialogue_items: Array[String] = [
-	" 3 hawaiian drive-in burgers " ,
-	 " and 1 burger special " ,
-	 " and 1 riceplate with short ribs " ,
-]
+
+var expressions := {
+	"happy": preload("res://assets/emotion_happy.png"),
+	"regular": preload("res://assets/emotion_regular.png"),
+	"sad": preload("res://assets/emotion_sad.png"),
+	
+}
+
+var dialogue_items: Array[Dictionary] = [
+	{ 
+		"expression": expressions["sad"],
+		"text": " 3 hawaiian drive-in burgers " ,
+		},
+	{
+		"expression": expressions["regular"],
+		"text": "and 1 burger special " ,
+		},
+	{
+		"expression": expressions["happy"],
+		"text": "and 1 riceplate with short ribs " ,
+		},
+	]
 
 var current_item_index:= 0 
 
 func show_text() -> void:
 	var current_item := dialogue_items[current_item_index]
-	rich_text_label.text = current_item
+	rich_text_label.text = current_item["text"]
+	expression.texture = current_item["expression"]
 	rich_text_label.visible_ratio = 0.0
 	var tween:=  create_tween()
 	var text_appearing_duration := 1.2

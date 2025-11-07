@@ -28,14 +28,20 @@ func create_button_pink() -> void:
 )
 
 func _ready() -> void:
-	create_button_pink()
-
-
+	create_buttons()
+	
 func create_buttons() -> void:
+	for current_body: String in bodies:
+		var button := Button.new()
+		row_bodies.add_child(button)
+		button.text = current_body.capitalize()
+		button.pressed.connect(func() -> void: 
+			body.texture= bodies[current_body]
+	)
 	for current_expression: String in expressions:
 		var button := Button.new()
 		row_expressions.add_child(button)
 		button.text = current_expression.capitalize()
-		button.pressed.connect(func() -> void:
-			expression.texture = expressions[current_expression]
+		button.pressed.connect(func() -> void: 
+			expression.texture= expressions[current_expression]
 )
