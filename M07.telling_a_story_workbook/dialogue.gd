@@ -7,6 +7,10 @@ extends Control
 @onready var expression: TextureRect = %Expression
 
 
+var bodies := {
+	"sophia": preload("res://assets/sophia.png"),
+	"pink": preload("res://assets/pink.png")
+}
 var expressions := {
 	"happy": preload("res://assets/emotion_happy.png"),
 	"regular": preload("res://assets/emotion_regular.png"),
@@ -16,17 +20,40 @@ var expressions := {
 
 var dialogue_items: Array[Dictionary] = [
 	{ 
-		"expression": expressions["sad"],
-		"text": " 3 hawaiian drive-in burgers " ,
-		},
+		"expression": expressions["regular"],
+		"text": " she would like 3 hawaiian drive-in burgers " ,
+		"character": bodies["sophia"]
+	},
 	{
 		"expression": expressions["regular"],
 		"text": "and 1 burger special " ,
-		},
+		"character": bodies["pink"]
+	},
 	{
 		"expression": expressions["happy"],
 		"text": "and 1 riceplate with short ribs " ,
-		},
+		"character": bodies["sophia"]
+	},
+	{
+		"expression": expressions["happy"],
+		"text": " make sure to give me extra mac salad too " ,
+		"character": bodies["pink"]
+	},
+	{
+		"expression": expressions["sad"],
+		"text": " ..we are not gonna finish any of this aren't we. " ,
+		"character": bodies["sophia"]
+	},
+	{
+		"expression": expressions["regular"],
+		"text": " .. " ,
+		"character": bodies["pink"]
+	},
+	{
+		"expression": expressions["sad"],
+		"text": " No " ,
+		"character": bodies["pink"]
+	},
 	]
 
 func slide_in() -> void:
@@ -46,12 +73,15 @@ func show_text() -> void:
 	expression.texture = current_item["expression"]
 	rich_text_label.visible_ratio = 0.0
 	var tween:=  create_tween()
-	var text_appearing_duration := 1.2
+	var text_appearing_duration: float = current_item["text"].length()/ 30.0
 	tween.tween_property(rich_text_label, "visible_ratio", 1.0, text_appearing_duration)
 	var sound_max_offset:= audio_stream_player.stream.get_length() - text_appearing_duration
 	var sound_start_position:= randf() * sound_max_offset 
 	audio_stream_player.play(sound_start_position)
 	tween.finished.connect(audio_stream_player.stop)
+	rich_text_label.text = current_item["text"]
+	expression.texture = current_item["expression"]
+	body.texture = current_item["character"]
 	slide_in()
 
 
