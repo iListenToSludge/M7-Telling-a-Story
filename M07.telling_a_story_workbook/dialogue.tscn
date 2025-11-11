@@ -81,6 +81,7 @@ offset_top = 514.0
 offset_right = -301.0
 offset_bottom = 779.0
 grow_horizontal = 2
+bbcode_enabled = true
 text = "3 hawaiian drive-in burgers and 1 burger special and 1 riceplate with short ribs"
 fit_content = true
 

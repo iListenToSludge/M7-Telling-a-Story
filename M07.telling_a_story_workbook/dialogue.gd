@@ -21,22 +21,22 @@ var expressions := {
 var dialogue_items: Array[Dictionary] = [
 	{ 
 		"expression": expressions["regular"],
-		"text": " she would like 3 hawaiian drive-in burgers.. " ,
+		"text": " she would like [b]3[/b] hawaiian drive-in burgers.. " ,
 		"character": bodies["sophia"]
 	},
 	{
 		"expression": expressions["regular"],
-		"text": "and 1 burger special.. " ,
+		"text": "and [b]1[/b]  burger special.. " ,
 		"character": bodies["pink"]
 	},
 	{
 		"expression": expressions["happy"],
-		"text": "and 1 riceplate with short ribs.. " ,
+		"text": "and [b]1[/b] riceplate with short ribs.. " ,
 		"character": bodies["sophia"]
 	},
 	{
 		"expression": expressions["happy"],
-		"text": " make sure to give me extra mac salad too!! " ,
+		"text": " [shake]make sure to give me [/shake] [wave][rainbow val=0.8]extra[/rainbow][/wave] [shake]mac salad too!![/shake] " ,
 		"character": bodies["pink"]
 	},
 	{
@@ -56,7 +56,7 @@ var dialogue_items: Array[Dictionary] = [
 	},
 	{
 		"expression": expressions["sad"],
-		"text": " No. " ,
+		"text": " [shake]No.[/shake] " ,
 		"character": bodies["pink"]
 	},
 	]
