@@ -21,27 +21,32 @@ var expressions := {
 var dialogue_items: Array[Dictionary] = [
 	{ 
 		"expression": expressions["regular"],
-		"text": " she would like 3 hawaiian drive-in burgers " ,
+		"text": " she would like 3 hawaiian drive-in burgers.. " ,
 		"character": bodies["sophia"]
 	},
 	{
 		"expression": expressions["regular"],
-		"text": "and 1 burger special " ,
+		"text": "and 1 burger special.. " ,
 		"character": bodies["pink"]
 	},
 	{
 		"expression": expressions["happy"],
-		"text": "and 1 riceplate with short ribs " ,
+		"text": "and 1 riceplate with short ribs.. " ,
 		"character": bodies["sophia"]
 	},
 	{
 		"expression": expressions["happy"],
-		"text": " make sure to give me extra mac salad too " ,
+		"text": " make sure to give me extra mac salad too!! " ,
 		"character": bodies["pink"]
 	},
 	{
+		"expression": expressions["regular"],
+		"text": " .. " ,
+		"character": bodies["sophia"]
+	},
+	{
 		"expression": expressions["sad"],
-		"text": " ..we are not gonna finish any of this aren't we. " ,
+		"text": " ..we're not gonna finish any of this are we. " ,
 		"character": bodies["sophia"]
 	},
 	{
@@ -51,7 +56,7 @@ var dialogue_items: Array[Dictionary] = [
 	},
 	{
 		"expression": expressions["sad"],
-		"text": " No " ,
+		"text": " No. " ,
 		"character": bodies["pink"]
 	},
 	]
@@ -83,6 +88,8 @@ func show_text() -> void:
 	expression.texture = current_item["expression"]
 	body.texture = current_item["character"]
 	slide_in()
+	next_button.disabled = true
+	tween.finished.connect(func() -> void: next_button.disabled = false )
 
 
 
